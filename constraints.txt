@@ -1,0 +1,83 @@
+TIMETABLE CONSTRAINT LIST
+
+HARD CONSTRAINTS (Non-Negotiable - Solver Must Satisfy)
+1. Global Time Grid
+* School start_time and end_time are fixed and immutable
+* Period durations and count per weekday/Saturday are user-configurable
+* Period 0 (Assembly/Prayer): Optional via toggle; if enabled, reserved for assembly—no academic sessions allowed
+* Period 0 is NOT counted toward teacher's min/max daily period requirements
+* Saturday is half-day: max 4 periods (vs 8 on weekdays)
+* Recess and lunch are fixed blocks—no academic scheduling allowed
+* Lunch break must be configurable in school settings
+2. Teacher Single Assignment
+* A teacher can teach only ONE class/section per period (no double-booking)
+* Teacher cannot exceed max_periods_per_day
+* Teacher must meet min_periods_per_day (excluding Period 0)
+* Teacher cannot exceed max_consecutive_periods (default = 3) without a break (recess/lunch/free period)
+* Weekly load must be balanced: cannot have 7 periods Monday and 2 periods Tuesday
+3. Section/Class Rules
+* Each section can have only ONE subject scheduled per period
+* Every section must have a designated class teacher
+* Optional Hard Constraint (Toggle ON by default): Class teacher gets Period 1 every day with their own section
+* If toggled OFF, class teacher should still get minimum 2 periods/week with their section
+4. Subject-Teacher Lock-in
+* Once a teacher is assigned to teach Subject X for Section Y, the SAME teacher handles ALL periods of Subject X for Section Y throughout the year
+* Algorithm must not split one subject across multiple teachers for the same section
+* This is derived from Class-Section → Subject-Teacher mapping (stored as section property)
+5. Language Block Synchronization
+* Optional Hard Constraint (Toggle ON by default)
+* When a "language block" (e.g., "1st Language" or "3rd Language") is scheduled for a section:
+    * ALL language teachers for that section must be simultaneously free
+    * Example: If Grade 8A has "2nd Language" at Tuesday P4, then Teacher_Hindi_8A, Teacher_Kannada_8A, Teacher_Sanskrit_8A, Teacher_French_8A must ALL be free and assigned to that block
+    * None of these teachers can be assigned elsewhere during that period
+* Students dynamically split into language groups; timetable shows only "1st Language" / "2nd Language" / "3rd Language"
+6. Lab Double-Block Integrity
+* Subjects flagged as requiring N consecutive periods (e.g., labs need 2) must get contiguous slots
+* Lab blocks cannot bridge recess/lunch (e.g., Period 3 + Lunch is invalid)
+* Lab blocks cannot straddle breaks
+7. Special Room/Resource Allocation
+* Labs, sports grounds, music rooms, yoga rooms, etc. are limited resources
+* Global setting: User defines max simultaneous capacity per resource type (e.g., "2 Computer Labs")
+* Solver must ensure no more than N sections scheduled for resource-requiring subjects simultaneously
+* If no capacity limit specified → assume unlimited (conducted in home classroom)
+8. Weekly Subject Load Requirements
+* Each subject must receive its min_periods_per_week and max_periods_per_week (e.g., Maths: 6-7, Languages: 5-6, PE: 1-2)
+* All periods for all subjects for all sections must fit within the week
+9. Substitution Reserve
+* At any given period, minimum N_free_teachers_per_period (configurable, e.g., 3-5) must be kept free as substitute/proxy teachers
+10. Teacher Availability Constraints
+* Respect explicit teacher unavailability windows:
+    * Day restrictions: e.g., Drawing teacher available only Mon/Thu/Sat
+    * Time restrictions: e.g., Yoga teacher available only till 12:00 PM
+    * Default for regular teachers: Mon-Sat, full school hours
+* Blocked periods cannot be assigned to that teacher
+
+SOFT CONSTRAINTS (Preferences - Minimize Violations)
+1. Core Subject Placement (Morning Rule)
+* Prefer core subjects (Maths, Science, Physics, Chemistry) in Periods 1, 2, or 3 (pre-lunch)
+* Avoid core subjects immediately after lunch ("post-lunch dip" period)
+2. Subject Distribution & Balance
+* Distribute heavy subjects (Maths, Science) evenly across the week—avoid clustering
+* Space out similar subjects across different days
+* Balance "heavy textbook" subjects with "light textbook" subjects daily (reduce bag weight)
+* Try to have at least one "thinking break" between consecutive Maths periods across the week
+3. Teacher Wellbeing
+* Minimize variance in teacher load across the week
+* Minimize idle gaps in teacher's daily schedule (avoid: Period 1, Free, Free, Period 5, 6, 7)
+* If teacher works full Saturday load, give lighter Monday morning
+* Give each teacher at least one free period daily for preparation
+4. Student Energy Management
+* Schedule leisure subjects (PE, Art, Music, Library) in latter half of the day
+* Avoid PE in Period 1 (cold/damp grounds) or immediately after lunch (health/digestion)
+* Place physically active subjects just before/after breaks (for transitions/clothing changes)
+* Post-lunch slots (Period 6+) should prioritize Languages, History, Labs over purely theoretical core subjects
+5. Academic Effectiveness
+* Language subjects ideally not on same day as language block (avoid linguistic overload)
+* Value Education, Library, Computer Science distributed—not clustered on one day
+6. Fair Distribution of Undesirable Slots
+* Rotate "bad slots" (e.g., Friday Period 8, Saturday Period 4) fairly among teachers
+* No single teacher stuck with same undesirable slot every week
+7. Optional Toggle - Same Subject Twice Daily
+* User can enable: Prevent same subject twice in a day (except lab double-blocks)
+* Default: OFF (allowing same subject twice daily)
+

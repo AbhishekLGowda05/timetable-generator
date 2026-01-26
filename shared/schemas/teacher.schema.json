@@ -1,0 +1,106 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "teacher.schema.json",
+  "title": "Teacher",
+  "description": "Teacher profile with availability and load constraints",
+  "type": "object",
+  "required": ["teacher_id", "name", "subjects_can_teach", "min_periods_day", "max_periods_day"],
+  "properties": {
+    "teacher_id": {
+      "type": "string",
+      "description": "Unique identifier for the teacher",
+      "pattern": "^[A-Za-z0-9_-]+$"
+    },
+    "name": {
+      "type": "string",
+      "description": "Full name of the teacher",
+      "minLength": 1
+    },
+    "subjects_can_teach": {
+      "type": "array",
+      "description": "List of subject IDs this teacher can teach",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "sections_assigned": {
+      "type": "array",
+      "description": "List of section IDs assigned to this teacher",
+      "items": {
+        "type": "string"
+      },
+      "default": []
+    },
+    "min_periods_day": {
+      "type": "integer",
+      "description": "Minimum periods per day (excluding Period 0)",
+      "minimum": 0,
+      "maximum": 10
+    },
+    "max_periods_day": {
+      "type": "integer",
+      "description": "Maximum periods per day",
+      "minimum": 1,
+      "maximum": 10
+    },
+    "min_periods_week": {
+      "type": "integer",
+      "description": "Minimum periods per week",
+      "minimum": 0,
+      "default": 0
+    },
+    "max_periods_week": {
+      "type": "integer",
+      "description": "Maximum periods per week",
+      "minimum": 1,
+      "default": 40
+    },
+    "max_consecutive_periods": {
+      "type": "integer",
+      "description": "Maximum consecutive periods without break",
+      "minimum": 1,
+      "maximum": 5,
+      "default": 3
+    },
+    "is_class_teacher_of": {
+      "type": "string",
+      "description": "Section ID if this teacher is a class teacher",
+      "default": null
+    },
+    "is_specialist": {
+      "type": "boolean",
+      "description": "Whether this is a specialist teacher (rare subjects like Sanskrit, Music, Art). Specialist teachers get scheduling priority to ensure their limited hours are accommodated.",
+      "default": false
+    },
+    "availability": {
+      "type": "object",
+      "description": "Teacher availability by day",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "available": {
+            "type": "boolean",
+            "default": true
+          },
+          "from_time": {
+            "type": "string",
+            "pattern": "^([01]\\d|2[0-3]):[0-5]\\d$"
+          },
+          "to_time": {
+            "type": "string",
+            "pattern": "^([01]\\d|2[0-3]):[0-5]\\d$"
+          },
+          "blocked_periods": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}

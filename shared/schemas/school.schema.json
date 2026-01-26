@@ -1,0 +1,111 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "school.schema.json",
+  "title": "School Configuration",
+  "description": "School settings including time grid and periods configuration",
+  "type": "object",
+  "required": ["school_id", "name", "start_time", "end_time", "weekdays", "periods_per_weekday"],
+  "properties": {
+    "school_id": {
+      "type": "integer",
+      "description": "Unique identifier for the school"
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the school",
+      "minLength": 1
+    },
+    "start_time": {
+      "type": "string",
+      "pattern": "^([01]\\d|2[0-3]):[0-5]\\d$",
+      "description": "School start time in HH:MM format"
+    },
+    "end_time": {
+      "type": "string",
+      "pattern": "^([01]\\d|2[0-3]):[0-5]\\d$",
+      "description": "School end time in HH:MM format"
+    },
+    "weekdays": {
+      "type": "array",
+      "description": "Active school days",
+      "items": {
+        "type": "string",
+        "enum": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "periods_per_weekday": {
+      "type": "integer",
+      "description": "Number of periods per regular weekday",
+      "minimum": 1,
+      "maximum": 10
+    },
+    "saturday_periods": {
+      "type": "integer",
+      "description": "Number of periods on Saturday (half-day)",
+      "minimum": 0,
+      "maximum": 6,
+      "default": 4
+    },
+    "period_duration_minutes": {
+      "type": "integer",
+      "description": "Duration of each period in minutes",
+      "minimum": 20,
+      "maximum": 90,
+      "default": 40
+    },
+    "prayer_enabled": {
+      "type": "boolean",
+      "description": "Whether Period 0 (assembly/prayer) is enabled",
+      "default": true
+    },
+    "prayer_duration_minutes": {
+      "type": "integer",
+      "description": "Duration of prayer/assembly in minutes",
+      "minimum": 0,
+      "maximum": 30,
+      "default": 15
+    },
+    "lunch_period_index": {
+      "type": "integer",
+      "description": "Period number AFTER which lunch break occurs (e.g., 4 means lunch is AFTER Period 4, before Period 5). This is NOT a period itself - it's a break between periods.",
+      "minimum": 1
+    },
+    "lunch_after_period": {
+      "type": "integer",
+      "description": "Alternative name for lunch_period_index. Period number AFTER which lunch break occurs. Use either this or lunch_period_index.",
+      "minimum": 1
+    },
+    "lunch_duration_minutes": {
+      "type": "integer",
+      "description": "Duration of lunch break in minutes",
+      "minimum": 20,
+      "maximum": 60,
+      "default": 30
+    },
+    "recess_period_indices": {
+      "type": "array",
+      "description": "Period numbers AFTER which recess occurs. Example: [2] means recess after Period 2.",
+      "items": {
+        "type": "integer",
+        "minimum": 1
+      },
+      "uniqueItems": true
+    },
+    "recess_after_every_n_periods": {
+      "type": "integer",
+      "description": "Automatic recess placement: insert recess after every N periods (excluding lunch). Example: 3 means recess after P3, P6, etc.",
+      "minimum": 2,
+      "maximum": 5
+    },
+    "recess_duration_minutes": {
+      "type": "integer",
+      "description": "Duration of recess in minutes",
+      "minimum": 5,
+      "maximum": 30,
+      "default": 15
+    }
+  },
+  "additionalProperties": false
+}

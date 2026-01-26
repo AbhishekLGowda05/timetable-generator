@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "solver_input.schema.json",
+  "title": "Solver Input",
+  "description": "Complete input data for the timetable solver",
+  "type": "object",
+  "required": ["school", "classes", "teachers", "subjects", "constraints"],
+  "properties": {
+    "school": {
+      "$ref": "school.schema.json",
+      "description": "School configuration"
+    },
+    "classes": {
+      "type": "array",
+      "description": "List of class sections",
+      "items": {
+        "$ref": "class.schema.json"
+      },
+      "minItems": 1
+    },
+    "teachers": {
+      "type": "array",
+      "description": "List of teachers",
+      "items": {
+        "$ref": "teacher.schema.json"
+      },
+      "minItems": 1
+    },
+    "subjects": {
+      "type": "array",
+      "description": "List of subjects",
+      "items": {
+        "$ref": "subject.schema.json"
+      },
+      "minItems": 1
+    },
+    "resources": {
+      "type": "array",
+      "description": "List of shared resources",
+      "items": {
+        "$ref": "resource.schema.json"
+      },
+      "default": []
+    },
+    "constraints": {
+      "$ref": "constraints.schema.json",
+      "description": "Constraint toggles and weights"
+    }
+  },
+  "additionalProperties": false
+}

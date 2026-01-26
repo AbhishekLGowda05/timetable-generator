@@ -1,0 +1,329 @@
+{
+  "school": {
+    "name": "Riverside Academy",
+    "academic_year": "2024-2025",
+    "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    "periods_per_day": 8,
+    "period_duration_minutes": 45,
+    "break_after_period": [4],
+    "break_duration_minutes": 15,
+    "lunch_after_period": 5,
+    "lunch_duration_minutes": 45,
+    "period_times": [
+      { "start": "08:00", "end": "08:45" },
+      { "start": "08:50", "end": "09:35" },
+      { "start": "09:40", "end": "10:25" },
+      { "start": "10:30", "end": "11:15" },
+      { "start": "11:30", "end": "12:15" },
+      { "start": "13:00", "end": "13:45" },
+      { "start": "13:50", "end": "14:35" },
+      { "start": "14:40", "end": "15:25" }
+    ]
+  },
+  "teachers": [
+    {
+      "id": "T001",
+      "name": "Dr. Emily Chen",
+      "email": "e.chen@riverside.edu",
+      "subjects": ["MATH-ALG", "MATH-GEO"],
+      "max_periods_per_day": 6,
+      "max_consecutive_periods": 3,
+      "unavailable": [
+        { "day": "Monday", "periods": [1] },
+        { "day": "Friday", "periods": [7, 8] }
+      ],
+      "preferences": {
+        "preferred_periods": [2, 3, 4],
+        "avoid_last_period": true
+      }
+    },
+    {
+      "id": "T002",
+      "name": "Mr. James Wilson",
+      "email": "j.wilson@riverside.edu",
+      "subjects": ["ENG-LIT", "ENG-COMP"],
+      "max_periods_per_day": 6,
+      "max_consecutive_periods": 2
+    },
+    {
+      "id": "T003",
+      "name": "Ms. Sarah Thompson",
+      "email": "s.thompson@riverside.edu",
+      "subjects": ["SCI-PHY", "SCI-CHEM"],
+      "max_periods_per_day": 5,
+      "max_consecutive_periods": 2,
+      "requires_lab": true
+    },
+    {
+      "id": "T004",
+      "name": "Mr. Michael Brown",
+      "email": "m.brown@riverside.edu",
+      "subjects": ["HIST", "GEO"],
+      "max_periods_per_day": 6
+    },
+    {
+      "id": "T005",
+      "name": "Ms. Lisa Garcia",
+      "email": "l.garcia@riverside.edu",
+      "subjects": ["PE"],
+      "max_periods_per_day": 8,
+      "requires_gym": true
+    },
+    {
+      "id": "T006",
+      "name": "Dr. Robert Taylor",
+      "email": "r.taylor@riverside.edu",
+      "subjects": ["SCI-BIO"],
+      "max_periods_per_day": 5,
+      "requires_lab": true
+    },
+    {
+      "id": "T007",
+      "name": "Mrs. Jennifer Adams",
+      "email": "j.adams@riverside.edu",
+      "subjects": ["ART"],
+      "max_periods_per_day": 6
+    },
+    {
+      "id": "T008",
+      "name": "Mr. David Martinez",
+      "email": "d.martinez@riverside.edu",
+      "subjects": ["MUSIC"],
+      "max_periods_per_day": 6
+    }
+  ],
+  "classes": [
+    {
+      "id": "C9A",
+      "name": "Grade 9A",
+      "grade": 9,
+      "section": "A",
+      "student_count": 28,
+      "homeroom_teacher_id": "T001"
+    },
+    {
+      "id": "C9B",
+      "name": "Grade 9B",
+      "grade": 9,
+      "section": "B",
+      "student_count": 26,
+      "homeroom_teacher_id": "T002"
+    },
+    {
+      "id": "C10A",
+      "name": "Grade 10A",
+      "grade": 10,
+      "section": "A",
+      "student_count": 30,
+      "homeroom_teacher_id": "T003"
+    },
+    {
+      "id": "C10B",
+      "name": "Grade 10B",
+      "grade": 10,
+      "section": "B",
+      "student_count": 27,
+      "homeroom_teacher_id": "T004"
+    },
+    {
+      "id": "C11A",
+      "name": "Grade 11A",
+      "grade": 11,
+      "section": "A",
+      "student_count": 25,
+      "homeroom_teacher_id": "T006"
+    },
+    {
+      "id": "C11B",
+      "name": "Grade 11B",
+      "grade": 11,
+      "section": "B",
+      "student_count": 24,
+      "homeroom_teacher_id": "T007"
+    }
+  ],
+  "subjects": [
+    {
+      "id": "MATH-ALG",
+      "name": "Algebra",
+      "short_name": "ALG",
+      "periods_per_week": 5,
+      "max_periods_per_day": 1,
+      "requires_consecutive": false
+    },
+    {
+      "id": "MATH-GEO",
+      "name": "Geometry",
+      "short_name": "GEO",
+      "periods_per_week": 4,
+      "max_periods_per_day": 1
+    },
+    {
+      "id": "ENG-LIT",
+      "name": "English Literature",
+      "short_name": "LIT",
+      "periods_per_week": 4,
+      "max_periods_per_day": 1
+    },
+    {
+      "id": "ENG-COMP",
+      "name": "English Composition",
+      "short_name": "COMP",
+      "periods_per_week": 3,
+      "max_periods_per_day": 1
+    },
+    {
+      "id": "SCI-PHY",
+      "name": "Physics",
+      "short_name": "PHY",
+      "periods_per_week": 4,
+      "requires_lab": true,
+      "double_period_required": true
+    },
+    {
+      "id": "SCI-CHEM",
+      "name": "Chemistry",
+      "short_name": "CHEM",
+      "periods_per_week": 4,
+      "requires_lab": true,
+      "double_period_required": true
+    },
+    {
+      "id": "SCI-BIO",
+      "name": "Biology",
+      "short_name": "BIO",
+      "periods_per_week": 3,
+      "requires_lab": true
+    },
+    {
+      "id": "HIST",
+      "name": "History",
+      "short_name": "HIST",
+      "periods_per_week": 3
+    },
+    {
+      "id": "GEO",
+      "name": "Geography",
+      "short_name": "GEO",
+      "periods_per_week": 2
+    },
+    {
+      "id": "PE",
+      "name": "Physical Education",
+      "short_name": "PE",
+      "periods_per_week": 2,
+      "requires_gym": true
+    },
+    {
+      "id": "ART",
+      "name": "Art",
+      "short_name": "ART",
+      "periods_per_week": 2
+    },
+    {
+      "id": "MUSIC",
+      "name": "Music",
+      "short_name": "MUS",
+      "periods_per_week": 1
+    }
+  ],
+  "resources": [
+    {
+      "id": "R-LAB1",
+      "name": "Science Lab 1",
+      "type": "laboratory",
+      "capacity": 30,
+      "equipment": ["microscopes", "bunsen_burners", "fume_hood"]
+    },
+    {
+      "id": "R-LAB2",
+      "name": "Science Lab 2",
+      "type": "laboratory",
+      "capacity": 25,
+      "equipment": ["computers", "sensors", "projector"]
+    },
+    {
+      "id": "R-GYM",
+      "name": "Gymnasium",
+      "type": "sports",
+      "capacity": 100
+    },
+    {
+      "id": "R-FIELD",
+      "name": "Sports Field",
+      "type": "sports",
+      "capacity": 200
+    },
+    {
+      "id": "R-ART",
+      "name": "Art Studio",
+      "type": "special",
+      "capacity": 25
+    },
+    {
+      "id": "R-MUSIC",
+      "name": "Music Room",
+      "type": "special",
+      "capacity": 30,
+      "equipment": ["piano", "sound_system"]
+    },
+    {
+      "id": "R-COMP",
+      "name": "Computer Lab",
+      "type": "laboratory",
+      "capacity": 30,
+      "equipment": ["computers", "projector", "printer"]
+    }
+  ],
+  "curriculum": [
+    { "class_id": "C9A", "subject_id": "MATH-ALG", "teacher_id": "T001", "periods_per_week": 5 },
+    { "class_id": "C9A", "subject_id": "ENG-LIT", "teacher_id": "T002", "periods_per_week": 4 },
+    { "class_id": "C9A", "subject_id": "SCI-PHY", "teacher_id": "T003", "periods_per_week": 4 },
+    { "class_id": "C9A", "subject_id": "HIST", "teacher_id": "T004", "periods_per_week": 3 },
+    { "class_id": "C9A", "subject_id": "PE", "teacher_id": "T005", "periods_per_week": 2 },
+    { "class_id": "C9A", "subject_id": "SCI-BIO", "teacher_id": "T006", "periods_per_week": 3 },
+    { "class_id": "C9A", "subject_id": "ART", "teacher_id": "T007", "periods_per_week": 2 },
+    { "class_id": "C9A", "subject_id": "MUSIC", "teacher_id": "T008", "periods_per_week": 1 },
+    
+    { "class_id": "C9B", "subject_id": "MATH-ALG", "teacher_id": "T001", "periods_per_week": 5 },
+    { "class_id": "C9B", "subject_id": "ENG-LIT", "teacher_id": "T002", "periods_per_week": 4 },
+    { "class_id": "C9B", "subject_id": "SCI-CHEM", "teacher_id": "T003", "periods_per_week": 4 },
+    { "class_id": "C9B", "subject_id": "GEO", "teacher_id": "T004", "periods_per_week": 2 },
+    { "class_id": "C9B", "subject_id": "PE", "teacher_id": "T005", "periods_per_week": 2 },
+    { "class_id": "C9B", "subject_id": "SCI-BIO", "teacher_id": "T006", "periods_per_week": 3 },
+    { "class_id": "C9B", "subject_id": "ART", "teacher_id": "T007", "periods_per_week": 2 },
+    { "class_id": "C9B", "subject_id": "MUSIC", "teacher_id": "T008", "periods_per_week": 1 },
+
+    { "class_id": "C10A", "subject_id": "MATH-GEO", "teacher_id": "T001", "periods_per_week": 4 },
+    { "class_id": "C10A", "subject_id": "ENG-COMP", "teacher_id": "T002", "periods_per_week": 3 },
+    { "class_id": "C10A", "subject_id": "SCI-PHY", "teacher_id": "T003", "periods_per_week": 4 },
+    { "class_id": "C10A", "subject_id": "HIST", "teacher_id": "T004", "periods_per_week": 3 },
+    { "class_id": "C10A", "subject_id": "PE", "teacher_id": "T005", "periods_per_week": 2 },
+    { "class_id": "C10A", "subject_id": "SCI-BIO", "teacher_id": "T006", "periods_per_week": 3 },
+    { "class_id": "C10A", "subject_id": "ART", "teacher_id": "T007", "periods_per_week": 2 },
+    { "class_id": "C10A", "subject_id": "MUSIC", "teacher_id": "T008", "periods_per_week": 1 },
+
+    { "class_id": "C10B", "subject_id": "MATH-GEO", "teacher_id": "T001", "periods_per_week": 4 },
+    { "class_id": "C10B", "subject_id": "ENG-COMP", "teacher_id": "T002", "periods_per_week": 3 },
+    { "class_id": "C10B", "subject_id": "SCI-CHEM", "teacher_id": "T003", "periods_per_week": 4 },
+    { "class_id": "C10B", "subject_id": "GEO", "teacher_id": "T004", "periods_per_week": 2 },
+    { "class_id": "C10B", "subject_id": "PE", "teacher_id": "T005", "periods_per_week": 2 },
+    { "class_id": "C10B", "subject_id": "SCI-BIO", "teacher_id": "T006", "periods_per_week": 3 },
+    { "class_id": "C10B", "subject_id": "ART", "teacher_id": "T007", "periods_per_week": 2 },
+    { "class_id": "C10B", "subject_id": "MUSIC", "teacher_id": "T008", "periods_per_week": 1 },
+
+    { "class_id": "C11A", "subject_id": "MATH-ALG", "teacher_id": "T001", "periods_per_week": 5 },
+    { "class_id": "C11A", "subject_id": "ENG-LIT", "teacher_id": "T002", "periods_per_week": 4 },
+    { "class_id": "C11A", "subject_id": "SCI-PHY", "teacher_id": "T003", "periods_per_week": 4 },
+    { "class_id": "C11A", "subject_id": "HIST", "teacher_id": "T004", "periods_per_week": 3 },
+    { "class_id": "C11A", "subject_id": "PE", "teacher_id": "T005", "periods_per_week": 2 },
+    { "class_id": "C11A", "subject_id": "SCI-BIO", "teacher_id": "T006", "periods_per_week": 3 },
+
+    { "class_id": "C11B", "subject_id": "MATH-ALG", "teacher_id": "T001", "periods_per_week": 5 },
+    { "class_id": "C11B", "subject_id": "ENG-LIT", "teacher_id": "T002", "periods_per_week": 4 },
+    { "class_id": "C11B", "subject_id": "SCI-CHEM", "teacher_id": "T003", "periods_per_week": 4 },
+    { "class_id": "C11B", "subject_id": "GEO", "teacher_id": "T004", "periods_per_week": 2 },
+    { "class_id": "C11B", "subject_id": "PE", "teacher_id": "T005", "periods_per_week": 2 },
+    { "class_id": "C11B", "subject_id": "SCI-BIO", "teacher_id": "T006", "periods_per_week": 3 }
+  ]
+}

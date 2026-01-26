@@ -1,0 +1,77 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "subject.schema.json",
+  "title": "Subject",
+  "description": "Subject configuration with load requirements and resource needs",
+  "type": "object",
+  "required": ["subject_id", "name", "category", "min_per_week", "max_per_week"],
+  "properties": {
+    "subject_id": {
+      "type": "string",
+      "description": "Unique identifier for the subject",
+      "pattern": "^[A-Za-z0-9_-]+$"
+    },
+    "name": {
+      "type": "string",
+      "description": "Display name of the subject",
+      "minLength": 1
+    },
+    "category": {
+      "type": "string",
+      "description": "Subject category for scheduling preferences",
+      "enum": ["core", "language", "leisure", "lab", "arts", "special"]
+    },
+    "min_per_week": {
+      "type": "integer",
+      "description": "Minimum periods per week required",
+      "minimum": 0
+    },
+    "max_per_week": {
+      "type": "integer",
+      "description": "Maximum periods per week allowed",
+      "minimum": 1
+    },
+    "requires_block": {
+      "type": "boolean",
+      "description": "Whether subject requires consecutive periods",
+      "default": false
+    },
+    "block_length": {
+      "type": "integer",
+      "description": "Number of consecutive periods if block required",
+      "minimum": 2,
+      "maximum": 4,
+      "default": 2
+    },
+    "requires_resource": {
+      "type": "boolean",
+      "description": "Whether subject requires a special resource/room",
+      "default": false
+    },
+    "resource_type": {
+      "type": "string",
+      "description": "Type of resource required (e.g., 'Computer Lab', 'Physics Lab')"
+    },
+    "prefer_morning": {
+      "type": "boolean",
+      "description": "Whether this subject prefers morning slots",
+      "default": false
+    },
+    "avoid_after_lunch": {
+      "type": "boolean",
+      "description": "Whether to avoid scheduling after lunch",
+      "default": false
+    },
+    "is_specialist": {
+      "type": "boolean",
+      "description": "Whether this is a specialist subject (rare languages, arts). Gets scheduling priority.",
+      "default": false
+    },
+    "is_language_block": {
+      "type": "boolean",
+      "description": "Whether this subject is part of a language block that requires synchronized scheduling across streams.",
+      "default": false
+    }
+  },
+  "additionalProperties": false
+}

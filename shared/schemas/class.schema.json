@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "class.schema.json",
+  "title": "Class Section",
+  "description": "Class/Section configuration with subject-teacher mapping",
+  "type": "object",
+  "required": ["section_id", "grade", "subject_teacher_map"],
+  "properties": {
+    "section_id": {
+      "type": "string",
+      "description": "Unique identifier for the section (e.g., '8A', '10B')",
+      "pattern": "^[A-Za-z0-9_-]+$"
+    },
+    "grade": {
+      "type": "integer",
+      "description": "Grade/Class number",
+      "minimum": 1,
+      "maximum": 12
+    },
+    "section_name": {
+      "type": "string",
+      "description": "Section name (e.g., 'A', 'B')",
+      "default": "A"
+    },
+    "class_teacher_id": {
+      "type": "string",
+      "description": "Teacher ID of the class teacher"
+    },
+    "subject_teacher_map": {
+      "type": "object",
+      "description": "Mapping of subject ID to assigned teacher ID",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "minProperties": 1
+    },
+    "language_block_enabled": {
+      "type": "boolean",
+      "description": "Whether language block synchronization is enabled for this section",
+      "default": true
+    },
+    "language_subjects": {
+      "type": "array",
+      "description": "List of language subject IDs for language block",
+      "items": {
+        "type": "string"
+      },
+      "default": []
+    },
+    "language_teachers": {
+      "type": "array",
+      "description": "List of teacher IDs for language block synchronization",
+      "items": {
+        "type": "string"
+      },
+      "default": []
+    }
+  },
+  "additionalProperties": false
+}

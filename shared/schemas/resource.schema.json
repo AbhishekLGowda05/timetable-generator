@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "resource.schema.json",
+  "title": "Resource",
+  "description": "Shared resource (lab, room, ground) with capacity constraints",
+  "type": "object",
+  "required": ["resource_id", "resource_type", "max_simultaneous_capacity"],
+  "properties": {
+    "resource_id": {
+      "type": "string",
+      "description": "Unique identifier for the resource",
+      "pattern": "^[A-Za-z0-9_-]+$"
+    },
+    "resource_type": {
+      "type": "string",
+      "description": "Type/category of resource (e.g., 'Computer Lab', 'Sports Ground')",
+      "minLength": 1
+    },
+    "name": {
+      "type": "string",
+      "description": "Display name of the resource"
+    },
+    "max_simultaneous_capacity": {
+      "type": "integer",
+      "description": "Maximum number of sections that can use this resource type simultaneously",
+      "minimum": 1
+    },
+    "available_periods": {
+      "type": "object",
+      "description": "Resource availability by day",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}

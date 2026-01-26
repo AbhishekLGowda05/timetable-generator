@@ -1,0 +1,157 @@
+{
+  "status": "INFEASIBLE",
+  "timetable": {},
+  "teacher_schedules": {},
+  "meta": {
+    "solve_time_seconds": 0.06,
+    "variables_count": 5782,
+    "constraints_count": 15305,
+    "objective_value": null,
+    "solver_status_code": 3,
+    "soft_violations": {}
+  },
+  "diagnostics": [
+    {
+      "type": "suggestion",
+      "category": "relaxation",
+      "message": "Try increasing the solver time limit",
+      "affected_entities": []
+    },
+    {
+      "type": "suggestion",
+      "category": "relaxation",
+      "message": "Consider disabling some soft constraints",
+      "affected_entities": []
+    },
+    {
+      "type": "suggestion",
+      "category": "relaxation",
+      "message": "Review teacher availability settings",
+      "affected_entities": []
+    }
+  ],
+  "warnings": [
+    "Section '6A': maximum periods (46) is less than available slots (49) - some slots will be empty",
+    "Section '6B': maximum periods (46) is less than available slots (49) - some slots will be empty",
+    "Section '7A': maximum periods (46) is less than available slots (49) - some slots will be empty",
+    "Section '7B': maximum periods (46) is less than available slots (49) - some slots will be empty",
+    "Section '8A': maximum periods (48) is less than available slots (49) - some slots will be empty",
+    "Section '8B': maximum periods (48) is less than available slots (49) - some slots will be empty",
+    "Section '9A': maximum periods (48) is less than available slots (49) - some slots will be empty",
+    "Section '9B': maximum periods (48) is less than available slots (49) - some slots will be empty",
+    "Section '10A': maximum periods (48) is less than available slots (49) - some slots will be empty",
+    "Section '10B': maximum periods (48) is less than available slots (49) - some slots will be empty"
+  ],
+  "grid_config": {
+    "weekdays": [
+      "Mon",
+      "Tue",
+      "Wed",
+      "Thu",
+      "Fri",
+      "Sat"
+    ],
+    "periods_per_weekday": 9,
+    "saturday_periods": 4,
+    "prayer_enabled": true,
+    "prayer_duration_minutes": 30,
+    "recess": {
+      "after_periods": [
+        3
+      ],
+      "duration_minutes": 20
+    },
+    "lunch": {
+      "after_period": 5,
+      "duration_minutes": 40
+    },
+    "period_times": [
+      {
+        "period": 0,
+        "start_time": "08:00",
+        "end_time": "08:30",
+        "is_prayer": true,
+        "is_after_recess": false,
+        "is_after_lunch": false
+      },
+      {
+        "period": 1,
+        "start_time": "08:30",
+        "end_time": "09:15",
+        "is_prayer": false,
+        "is_after_recess": false,
+        "is_after_lunch": false
+      },
+      {
+        "period": 2,
+        "start_time": "09:15",
+        "end_time": "10:00",
+        "is_prayer": false,
+        "is_after_recess": false,
+        "is_after_lunch": false
+      },
+      {
+        "period": 3,
+        "start_time": "10:00",
+        "end_time": "10:45",
+        "is_prayer": false,
+        "is_after_recess": false,
+        "is_after_lunch": false
+      },
+      {
+        "period": 4,
+        "start_time": "11:05",
+        "end_time": "11:50",
+        "is_prayer": false,
+        "is_after_recess": true,
+        "is_after_lunch": false
+      },
+      {
+        "period": 5,
+        "start_time": "11:50",
+        "end_time": "12:35",
+        "is_prayer": false,
+        "is_after_recess": false,
+        "is_after_lunch": false
+      },
+      {
+        "period": 6,
+        "start_time": "13:15",
+        "end_time": "14:00",
+        "is_prayer": false,
+        "is_after_recess": false,
+        "is_after_lunch": true
+      },
+      {
+        "period": 7,
+        "start_time": "14:00",
+        "end_time": "14:45",
+        "is_prayer": false,
+        "is_after_recess": false,
+        "is_after_lunch": false
+      },
+      {
+        "period": 8,
+        "start_time": "14:45",
+        "end_time": "15:30",
+        "is_prayer": false,
+        "is_after_recess": false,
+        "is_after_lunch": false
+      },
+      {
+        "period": 9,
+        "start_time": "15:30",
+        "end_time": "16:15",
+        "is_prayer": false,
+        "is_after_recess": false,
+        "is_after_lunch": false
+      }
+    ],
+    "start_time": "08:00",
+    "period_duration_minutes": 45
+  },
+  "_meta": {
+    "job_id": "284749f0-ae37-46e9-b3d6-061ed5920724",
+    "saved_at": "2026-01-25T13:38:43.217927"
+  }
+}

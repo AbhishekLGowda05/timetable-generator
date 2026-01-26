@@ -1,0 +1,194 @@
+Excel sheet and its schemasheet 1 = school_id	name	academic_year	start_time	end_time	weekdays	saturday_periods	prayer_minutes	lunch_period_index	recess_period_indices
+1	Vidya Mandir High School	2025-2026	08:00	15:30	Mon,Tue,Wed,Thu,Fri,Sat	4	30	5	3
+
+
+📋 SHEET 2: periods
+Copy this into a sheet named "periods":
+
+
+period_index	start_time	end_time	duration_minutes	is_prayer	is_recess	is_lunch0	08:00	08:30	30	1	0	01	08:30	09:15	45	0	0	02	09:15	10:00	45	0	0	03	10:00	10:20	20	0	1	04	10:20	11:05	45	0	0	05	11:05	11:50	45	0	0	06	11:50	12:30	40	0	0	17	12:30	13:15	45	0	0	08	13:15	14:00	45	0	0	09	14:00	14:45	45	0	0	0
+Note: Saturday uses only periods 0-4 (prayer + 4 academic periods)
+
+
+📋 SHEET 3: classes
+Copy this into a sheet named "classes":
+
+
+section_id	grade	section	student_count	class_teacher_id	language_block_enabled	language_structure6A	6	A	35	T001	0	6B	6	B	38	T002	0	7A	7	A	40	T003	1	2nd_lang_fixed:ENGLISH7B	7	B	37	T004	1	2nd_lang_fixed:ENGLISH8A	8	A	42	T005	1	2nd_lang_fixed:ENGLISH8B	8	B	39	T006	1	2nd_lang_fixed:ENGLISH9A	9	A	35	T007	1	2nd_lang_fixed:ENGLISH9B	9	B	33	T008	1	2nd_lang_fixed:ENGLISH10A	10	A	30	T009	1	2nd_lang_fixed:ENGLISH10B	10	B	28	T010	1	2nd_lang_fixed:ENGLISH
+Note: Grades 6A, 6B don't have language blocks (younger students, single language). Grades 7+ have language blocks where students choose between Hindi/Kannada/Sanskrit.
+
+
+
+📋 SHEET 4: subjects
+Copy this into a sheet named "subjects":
+
+
+subject_code	name	category	min_weekly	max_weekly	block_required	block_length	resource_typeMATH	Mathematics	core	6	7	0	0	SCI	Science	core	5	6	0	0	ENG	English	language	5	6	0	0	SST	Social Studies	core	4	5	0	0	HINDI	Hindi	language	4	5	0	0	KANNADA	Kannada	language	4	5	0	0	SANSKRIT	Sanskrit	language	4	5	0	0	PHY_LAB	Physics Lab	lab	2	2	1	2	Physics LabCHEM_LAB	Chemistry Lab	lab	2	2	1	2	Chemistry LabCOMP	Computer Science	leisure	2	3	0	0	Computer LabPE	Physical Education	leisure	2	2	0	0	Sports GroundART	Art & Craft	leisure	1	2	0	0
+
+
+📋 SHEET 5: teachers
+Copy this into a sheet named "teachers":
+teacher_id	name	subjects_can_teach	min_periods_day	max_periods_day	min_periods_week	max_periods_week	max_consecutive_periods	availability_days	availability_time
+T001	Rajesh Kumar	MATH,SCI	3	6	18	30	3	Mon,Tue,Wed,Thu,Fri,Sat	08:00-15:30
+T002	Priya Sharma	MATH,PHY_LAB	3	6	18	30	3	Mon,Tue,Wed,Thu,Fri,Sat	08:00-15:30
+T003	Suresh Reddy	SCI,CHEM_LAB	3	6	18	30	3	Mon,Tue,Wed,Thu,Fri,Sat	08:00-15:30
+T004	Anita Desai	ENG	4	7	20	35	3	Mon,Tue,Wed,Thu,Fri,Sat	08:00-15:30
+T005	Ramesh Iyer	MATH,COMP	3	6	18	30	3	Mon,Tue,Wed,Thu,Fri,Sat	08:00-15:30
+T006	Lakshmi Nair	SCI,PHY_LAB	3	6	18	30	3	Mon,Tue,Wed,Thu,Fri,Sat	08:00-15:30
+T007	Vijay Singh	SST	3	6	18	30	3	Mon,Tue,Wed,Thu,Fri,Sat	08:00-15:30
+T008	Meena Patel	ENG	4	7	20	35	3	Mon,Tue,Wed,Thu,Fri,Sat	08:00-15:30
+T009	Ganesh Rao	MATH,COMP	3	6	18	30	3	Mon,Tue,Wed,Thu,Fri,Sat	08:00-15:30
+T010	Sunita Joshi	SST,ART	3	6	18	30	3	Mon,Tue,Wed,Thu,Fri,Sat	08:00-15:30
+T011	Arun Kumar	HINDI	3	6	18	30	3	Mon,Tue,Wed,Thu,Fri,Sat	08:00-15:30
+T012	Kavita Menon	KANNADA	3	6	18	30	3	Mon,Tue,Wed,Thu,Fri,Sat	08:00-15:30
+T013	Deepak Verma	SANSKRIT	3	6	18	30	3	Mon,Tue,Wed,Thu,Fri,Sat	08:00-15:30
+T014	Rohit Bhatt	PE	2	5	10	25	3	Mon,Wed,Fri	08:00-15:30
+T015	Neha Gupta	COMP,ART	2	5	12	25	3	Tue,Thu,Sat	08:00-12:00
+
+
+
+
+📋 SHEET 6: mappings
+Copy this into a sheet named "mappings":section_id	subject_code	teacher_id	is_class_teacher
+6A	MATH	T001	1
+6A	SCI	T001	0
+6A	ENG	T004	0
+6A	SST	T007	0
+6A	HINDI	T011	0
+6A	PE	T014	0
+6A	COMP	T005	0
+6A	ART	T010	0
+6B	MATH	T002	1
+6B	SCI	T002	0
+6B	ENG	T008	0
+6B	SST	T010	0
+6B	KANNADA	T012	0
+6B	PE	T014	0
+6B	COMP	T015	0
+6B	ART	T015	0
+7A	MATH	T001	0
+7A	SCI	T003	1
+7A	ENG	T004	0
+7A	SST	T007	0
+7A	HINDI	T011	0
+7A	KANNADA	T012	0
+7A	SANSKRIT	T013	0
+7A	PE	T014	0
+7A	COMP	T005	0
+7A	ART	T010	0
+7B	MATH	T002	0
+7B	SCI	T003	0
+7B	ENG	T008	0
+7B	SST	T010	0
+7B	HINDI	T011	0
+7B	KANNADA	T012	0
+7B	SANSKRIT	T013	0
+7B	PE	T014	0
+7B	COMP	T015	0
+7B	ART	T010	0
+8A	MATH	T005	1
+8A	SCI	T006	0
+8A	ENG	T004	0
+8A	SST	T007	0
+8A	PHY_LAB	T006	0
+8A	CHEM_LAB	T003	0
+8A	HINDI	T011	0
+8A	KANNADA	T012	0
+8A	SANSKRIT	T013	0
+8A	PE	T014	0
+8A	COMP	T009	0
+8B	MATH	T009	0
+8B	SCI	T006	1
+8B	ENG	T008	0
+8B	SST	T010	0
+8B	PHY_LAB	T002	0
+8B	CHEM_LAB	T003	0
+8B	HINDI	T011	0
+8B	KANNADA	T012	0
+8B	SANSKRIT	T013	0
+8B	PE	T014	0
+8B	COMP	T015	0
+9A	MATH	T005	0
+9A	SCI	T006	0
+9A	ENG	T004	0
+9A	SST	T007	1
+9A	PHY_LAB	T002	0
+9A	CHEM_LAB	T003	0
+9A	HINDI	T011	0
+9A	KANNADA	T012	0
+9A	SANSKRIT	T013	0
+9A	PE	T014	0
+9A	COMP	T009	0
+9B	MATH	T009	0
+9B	SCI	T006	0
+9B	ENG	T008	1
+9B	SST	T010	0
+9B	PHY_LAB	T002	0
+9B	CHEM_LAB	T003	0
+9B	HINDI	T011	0
+9B	KANNADA	T012	0
+9B	SANSKRIT	T013	0
+9B	PE	T014	0
+9B	COMP	T015	0
+10A	MATH	T005	0
+10A	SCI	T006	0
+10A	ENG	T004	0
+10A	SST	T007	0
+10A	PHY_LAB	T002	0
+10A	CHEM_LAB	T003	0
+10A	HINDI	T011	0
+10A	KANNADA	T012	0
+10A	SANSKRIT	T013	0
+10A	PE	T014	0
+10A	COMP	T009	1
+10B	MATH	T009	0
+10B	SCI	T006	0
+10B	ENG	T008	0
+10B	SST	T010	1
+10B	PHY_LAB	T002	0
+10B	CHEM_LAB	T003	0
+10B	HINDI	T011	0
+10B	KANNADA	T012	0
+10B	SANSKRIT	T013	0
+10B	PE	T014	0
+10B	COMP	T015	0
+
+
+
+📋 SHEET 7: resources
+Copy this into a sheet named "resources":
+
+
+resource_id	resource_type	max_simultaneous_capacity	accessible_gradesPHYS_LAB_1	Physics Lab	2	8,9,10CHEM_LAB_1	Chemistry Lab	2	8,9,10COMP_LAB_1	Computer Lab	3	6,7,8,9,10SPORTS_GROUND	Sports Ground	2	6,7,8,9,10
+Note: Only 2 Physics Labs and 2 Chemistry Labs, but 3 Computer Labs
+
+
+
+📋 SHEET 8: language_groups
+Copy this into a sheet named "language_groups":
+
+
+section_id	language_slot	hindi_teacher	kannada_teacher	sanskrit_teacher7A	1st_lang	T011	T012	T0137B	1st_lang	T011	T012	T0138A	1st_lang	T011	T012	T0138B	1st_lang	T011	T012	T0139A	1st_lang	T011	T012	T0139B	1st_lang	T011	T012	T01310A	1st_lang	T011	T012	T01310B	1st_lang	T011	T012	T013
+Explanation: For grades 7-10, when "1st Language" period is scheduled, students split into 3 groups (Hindi/Kannada/Sanskrit), and all 3 teachers must be free.'
+
+
+
+📋 SHEET 9: constraints_config
+Copy this into a sheet named "constraints_config":
+
+
+constraint_name	enabled	valueprayer_enabled	1	language_sync_enabled	1	class_teacher_period_1	1	no_subject_twice_daily	0	substitution_reserve_count	1	3core_morning_only	1	max_consecutive_default	1	3max_daily_load_variance	1	3soft_weight_core_morning	1	10soft_weight_teacher_balance	1	8soft_weight_minimize_gaps	1	5soft_weight_leisure_afternoon	1	3soft_weight_avoid_pe_period_1	1	4soft_weight_subject_distribution	1	3soft_weight_teacher_free_period	1	2soft_weight_fair_slot_distribution	1	5
+
+
+
+
+Sheet #	Name	Primary Purpose	Key Logic/Constraints
+1	school_config	General Settings	Global timings and academic year.
+2	periods	Time Slots	Defines prayer, recess, and academic intervals.
+3	classes	Academic Units	Section-level data and elective toggles.
+4	subjects	Curriculum	Core vs. Leisure, Lab durations, and Resource types.
+5	teachers	Human Resources	Workload limits and time-based availability.
+6	mappings	Assignments	Linking teachers to specific subjects and sections.
+7	resources	Infrastructure	Physical capacity for Labs and Grounds.
+8	language_groups	Elective Logic	Parallel scheduling for Hindi/Kannada/Sanskrit.
+9	constraints_config	Solver Brain	Weights and rules for the timetable algorithm.

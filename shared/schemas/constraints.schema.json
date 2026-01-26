@@ -1,0 +1,123 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "constraints.schema.json",
+  "title": "Solver Constraints Configuration",
+  "description": "Toggle settings for hard and soft constraints. All toggles default to reasonable production values.",
+  "type": "object",
+  "properties": {
+    "prayer_enabled": {
+      "type": "boolean",
+      "description": "Whether Period 0 is reserved for assembly/prayer. When true, Period 0 exists but is NOT counted toward teacher daily load.",
+      "default": true
+    },
+    "language_sync_enabled": {
+      "type": "boolean",
+      "description": "Whether language block synchronization is enforced. When true, ALL language teachers for a section must be free during language periods. Set to false if section does not have multiple language streams.",
+      "default": true
+    },
+    "class_teacher_period_1": {
+      "type": "boolean",
+      "description": "Whether class teacher must have Period 1 with their section daily. Ensures class teacher can take attendance, make announcements.",
+      "default": true
+    },
+    "no_subject_twice_daily": {
+      "type": "boolean",
+      "description": "Prevent same subject twice in a day (except lab blocks). Set to true for variety; false allows Math in P2 and P7.",
+      "default": false
+    },
+    "core_morning_only": {
+      "type": "boolean",
+      "description": "Prefer core subjects (Math, Science, English) in morning periods P1-P3.",
+      "default": true
+    },
+    "substitution_reserve_count": {
+      "type": "integer",
+      "description": "Minimum free teachers per period for emergency substitution coverage.",
+      "minimum": 0,
+      "default": 3
+    },
+    "max_consecutive_default": {
+      "type": "integer",
+      "description": "Default maximum consecutive teaching periods for teachers without explicit setting.",
+      "minimum": 1,
+      "maximum": 5,
+      "default": 3
+    },
+    "max_daily_load_variance": {
+      "type": "integer",
+      "description": "Maximum allowed difference between a teacher's busiest and lightest day. Prevents 7 periods Monday, 2 periods Tuesday scenarios.",
+      "minimum": 1,
+      "maximum": 5,
+      "default": 3
+    },
+    "soft_weights": {
+      "type": "object",
+      "description": "Weights for soft constraint penalties in objective function. Higher weight = stronger preference. Set to 0 to disable a constraint.",
+      "properties": {
+        "teacher_balance": {
+          "type": "integer",
+          "description": "Weight for teacher daily load balance across the week.",
+          "minimum": 0,
+          "default": 10
+        },
+        "minimize_gaps": {
+          "type": "integer",
+          "description": "Weight for minimizing idle gaps in teacher schedules.",
+          "minimum": 0,
+          "default": 5
+        },
+        "core_morning": {
+          "type": "integer",
+          "description": "Weight for scheduling core subjects in morning periods.",
+          "minimum": 0,
+          "default": 3
+        },
+        "leisure_afternoon": {
+          "type": "integer",
+          "description": "Weight for scheduling leisure subjects (PE, Art, Music) in afternoon.",
+          "minimum": 0,
+          "default": 2
+        },
+        "avoid_pe_period_1": {
+          "type": "integer",
+          "description": "Weight for avoiding PE in Period 1 (students not warmed up).",
+          "minimum": 0,
+          "default": 4
+        },
+        "avoid_pe_after_lunch": {
+          "type": "integer",
+          "description": "Weight for avoiding PE immediately after lunch.",
+          "minimum": 0,
+          "default": 3
+        },
+        "subject_distribution": {
+          "type": "integer",
+          "description": "Weight for distributing heavy subjects across the week (avoid clustering).",
+          "minimum": 0,
+          "default": 5
+        },
+        "teacher_free_period": {
+          "type": "integer",
+          "description": "Weight for ensuring teachers get at least one free period daily for preparation.",
+          "minimum": 0,
+          "default": 2
+        },
+        "fair_slot_distribution": {
+          "type": "integer",
+          "description": "Weight for fair distribution of undesirable slots (last periods, Friday/Saturday).",
+          "minimum": 0,
+          "default": 5
+        },
+        "specialist_priority": {
+          "type": "integer",
+          "description": "Weight for prioritizing specialist teachers (rare subjects like Sanskrit, Music, Art). Higher weight ensures their limited hours are scheduled.",
+          "minimum": 0,
+          "default": 8
+        }
+      },
+      "additionalProperties": false,
+      "default": {}
+    }
+  },
+  "additionalProperties": false
+}
