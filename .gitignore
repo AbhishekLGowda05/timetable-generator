@@ -1,0 +1,31 @@
+# Python
+server/venv/
+**/__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+
+# Node
+frontend/node_modules/
+frontend/dist/
+
+# Environment
+.env
+.env.local
+
+# Runtime data
+data/raw_uploads/*
+data/parsed/*
+data/generated/*
+data/results/*
+!data/**/.gitkeep
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
